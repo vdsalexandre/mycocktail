@@ -8,7 +8,7 @@ public class Ingredient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private long idIngredient;
+    private Long idIngredient;
 
     @Column(name = "nom_ingredient")
     private String nomIngredient;
@@ -18,7 +18,7 @@ public class Ingredient {
 
     public Ingredient() { }
 
-    public long getIdIngredient() {
+    public Long getIdIngredient() {
         return idIngredient;
     }
 
