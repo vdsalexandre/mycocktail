@@ -1,7 +1,10 @@
 package vds.cocktail.mycocktail.model;
 
+import lombok.Data;
+
 import javax.persistence.*;
 
+@Data
 @Entity
 @Table(name = "ingredient")
 public class Ingredient {
@@ -15,26 +18,4 @@ public class Ingredient {
 
     @Column(name = "type_ingredient")
     private String typeIngredient;
-
-    public Ingredient() { }
-
-    public Long getIdIngredient() {
-        return idIngredient;
-    }
-
-    public String getNomIngredient() {
-        return nomIngredient;
-    }
-
-    public void setNomIngredient(String nomIngredient) {
-        this.nomIngredient = nomIngredient;
-    }
-
-    public String getTypeIngredient() {
-        return typeIngredient;
-    }
-
-    public void setTypeIngredient(String typeIngredient) {
-        this.typeIngredient = typeIngredient;
-    }
 }

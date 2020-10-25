@@ -14,8 +14,8 @@ import vds.cocktail.mycocktail.repository.IngredientRepository;
 import java.util.List;
 
 @RestController
-public class ApplicationController {
-    private static final Logger LOGGER = LogManager.getLogger(ApplicationController.class);
+public class AppController {
+    private static final Logger LOGGER = LogManager.getLogger(AppController.class);
 
     @Autowired
     CocktailRepository cocktailRepository;
@@ -39,5 +39,11 @@ public class ApplicationController {
     public List<Ingredient> findAllIngredient() {
         LOGGER.info("find all ingredients in database");
         return ingredientRepository.findAll();
+    }
+
+    @GetMapping("cocktail/contains/{nomIngredient}")
+    public List<Cocktail> findCocktailContainingIngredient(@PathVariable String nomIngredient) {
+        LOGGER.info("find all cocktail(s) containing {}", nomIngredient);
+        return cocktailRepository.findCocktailContainingIngredient(nomIngredient);
     }
 }
