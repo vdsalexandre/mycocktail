@@ -14,8 +14,8 @@ import vds.cocktail.mycocktail.repository.IngredientRepository;
 import java.util.List;
 
 @RestController
-public class CocktailController {
-    private static final Logger LOGGER = LogManager.getLogger(CocktailController.class);
+public class ApplicationController {
+    private static final Logger LOGGER = LogManager.getLogger(ApplicationController.class);
 
     @Autowired
     CocktailRepository cocktailRepository;
