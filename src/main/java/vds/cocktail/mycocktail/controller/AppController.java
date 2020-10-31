@@ -31,19 +31,25 @@ public class AppController {
 
     @GetMapping("cocktail/{name}")
     public Cocktail findByName(@PathVariable String name) {
-        LOGGER.info("find information about {}", name);
+        LOGGER.info("find information about '{}'", name);
         return cocktailRepository.findByNomCocktail(name);
+    }
+
+    @GetMapping("cocktail/contains/{nomIngredient}")
+    public List<Cocktail> findCocktailContainingIngredient(@PathVariable String nomIngredient) {
+        LOGGER.info("find all cocktail(s) containing '{}'", nomIngredient);
+        return cocktailRepository.findCocktailContainingIngredient(nomIngredient);
+    }
+
+    @GetMapping("ingredient/{nomCocktail}")
+    public List<Ingredient> findIngredientsFromCocktail(@PathVariable String nomCocktail) {
+        LOGGER.info("find all ingredient(s) from '{}'", nomCocktail);
+        return ingredientRepository.findIngredientsFromCocktail(nomCocktail);
     }
 
     @GetMapping("ingredient/all")
     public List<Ingredient> findAllIngredient() {
         LOGGER.info("find all ingredients in database");
         return ingredientRepository.findAll();
-    }
-
-    @GetMapping("cocktail/contains/{nomIngredient}")
-    public List<Cocktail> findCocktailContainingIngredient(@PathVariable String nomIngredient) {
-        LOGGER.info("find all cocktail(s) containing {}", nomIngredient);
-        return cocktailRepository.findCocktailContainingIngredient(nomIngredient);
     }
 }
