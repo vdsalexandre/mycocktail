@@ -10,3 +10,4 @@
 | http://localhost:8080/cocktail/all                   | List of all <*cocktail*>                       |
 | http://localhost:8080/cocktail/mojito                | information about <*cocktail*> **mojito**      |
 | http://localhost:8080/ingredient/all                 | List of all <*ingredient*>                     |
+| http://localhost:8080/ingredient/pina%20colada       | List of <*ingredient*> from **pina colada**    |
