@@ -2,11 +2,12 @@
 <html xmlns:th="http://www.thymeleaf.org">
     <head>
         <meta charset="UTF-8">
+        <link rel="icon" type="image/png" href="img/cocktail.png">
         <title>Where is my cocktail</title>
     </head>
     <body>
         <header>
-            <h1>Where is my cocktail ??!!</h1>
+            <h1>Where is my cocktail</h1>
         </header>
 
         <div class="content">
@@ -22,8 +23,7 @@
                     <tbody>
                         <tr th:each="cocktail : ${cocktails}">
                             <td th:text="${cocktail.idCocktail}">
-                            <td th:text="${cocktail.nomCocktail}">
-                            <td th:text="${cocktail.recetteCocktail}">
+                            <td><a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}"></a></td>
                         </tr>
                     </tbody>
                 </table>
