@@ -12,18 +12,19 @@
 
         <div class="content">
             <section>
-                <h3>Liste des cocktails</h3>
+                <h3 th:text="'Cocktail : ' + ${nomCocktail}"></h3>
+                <h4 th:text="'Liste des ingrédients'"></h4>
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
                             <th>NOM</th>
+                            <th>TYPE</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="cocktail : ${cocktails}">
-                            <td th:text="${cocktail.idCocktail}"></td>
-                            <td><a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}"></a></td>
+                        <tr th:each="ingredient : ${ingredients}">
+                            <td th:text="${ingredient.nomIngredient}"></td>
+                            <td th:text="${ingredient.typeIngredient}"></td>
                         </tr>
                     </tbody>
                 </table>
