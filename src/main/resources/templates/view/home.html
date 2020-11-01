@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <meta charset="UTF-8">
+        <title>Where is my cocktail</title>
+    </head>
+    <body>
+        <header>
+            <h1>Where is my cocktail ??!!</h1>
+        </header>
+
+        <div class="content">
+            <section>
+                <h3>Liste des cocktails</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>NOM</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="cocktail : ${cocktails}">
+                            <td th:text="${cocktail.idCocktail}">
+                            <td th:text="${cocktail.nomCocktail}">
+                            <td th:text="${cocktail.recetteCocktail}">
+                        </tr>
+                    </tbody>
+                </table>
+            </section>
+        </div>
+
+        <footer>
+
+        </footer>
+    </body>
+</html>

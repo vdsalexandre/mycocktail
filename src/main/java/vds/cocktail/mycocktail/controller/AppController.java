@@ -52,4 +52,5 @@ public class AppController {
         LOGGER.info("find all ingredients in database");
         return ingredientRepository.findAll();
     }
+
 }
