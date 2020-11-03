@@ -4,21 +4,21 @@
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="img/cocktail.png">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
-        <title>Where is my cocktail</title>
+        <title th:text="'Where is my cocktail'"></title>
     </head>
     <body>
         <header>
-            <h1>Where is my cocktail</h1>
+            <h1 th:text="'Where is my cocktail'"></h1>
         </header>
 
         <div class="content">
             <section>
-                <h3>Liste des cocktails</h3>
+                <h3 th:text="'Liste des cocktails'"></h3>
                 <table>
                     <thead>
                         <tr>
-                            <th>ID</th>
-                            <th>NOM</th>
+                            <th th:text="'ID'"></th>
+                            <th th:text="'NOM'"></th>
                         </tr>
                     </thead>
                     <tbody>

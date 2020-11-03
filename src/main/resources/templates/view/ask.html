@@ -13,16 +13,7 @@
 
         <div class="content">
             <section>
-                <h3><a th:href="${recetteCocktail}" th:text="'Cocktail : ' + ${nomCocktail}" th:target="_blank"></a></h3>
-                <h4 th:text="'Liste des ingrédients'"></h4>
-                <table>
-                    <tbody>
-                        <tr th:each="ingredient : ${ingredients}">
-                            <td th:text="${ingredient.nomIngredient}"></td>
-                            <td th:text="${ingredient.typeIngredient}"></td>
-                        </tr>
-                    </tbody>
-                </table>
+                <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
             </section>
         </div>
 
