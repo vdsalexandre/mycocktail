@@ -23,7 +23,7 @@
                     <tbody>
                         <tr th:each="cocktail : ${cocktails}">
                             <td th:text="${cocktail.idCocktail}"></td>
-                            <td><a th:href="'/detail/' + ${cocktail.nomCocktail}" th:text="${cocktail.nomCocktail}"></a></td>
+                            <td><a th:href="'/detail/' + ${cocktail.idCocktail}" th:text="${cocktail.nomCocktail}"></a></td>
                         </tr>
                     </tbody>
                 </table>

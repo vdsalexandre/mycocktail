@@ -32,11 +32,13 @@ public class WebController {
         return "home";
     }
 
-    @GetMapping("detail/{nomCocktail}")
-    public String detail(@PathVariable String nomCocktail, Model model) {
-        LOGGER.info("find all ingredients for '{}'", nomCocktail);
-        List<Ingredient> ingredients = ingredientRepository.findIngredientsFromCocktail(nomCocktail);
-        model.addAttribute("nomCocktail", nomCocktail);
+    @GetMapping("detail/{idCocktail}")
+    public String detail(@PathVariable Long idCocktail, Model model) {
+        Cocktail cocktail = cocktailRepository.findByIdCocktail(idCocktail);
+        LOGGER.info("find all ingredients for '{}'", cocktail.getNomCocktail());
+        List<Ingredient> ingredients = ingredientRepository.findIngredientsByIdCocktail(cocktail.getIdCocktail());
+        model.addAttribute("recetteCocktail", cocktail.getRecetteCocktail());
+        model.addAttribute("nomCocktail", cocktail.getNomCocktail());
         model.addAttribute("ingredients", ingredients);
         return "detail";
     }

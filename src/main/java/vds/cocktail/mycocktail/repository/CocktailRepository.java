@@ -15,6 +15,8 @@ public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
 
     Cocktail findByNomCocktail(String nomCocktail);
 
+    Cocktail findByIdCocktail(Long idCocktail);
+
     @Query(value = "SELECT COC.* FROM public.ingredient ING INNER JOIN public.composer COM " +
             "ON ING.id_ingredient = COM.id_ingredient INNER JOIN public.cocktail COC ON COM.id_cocktail = COC.id_cocktail " +
             "WHERE ING.nom_ingredient = :nomIngredient", nativeQuery = true)
