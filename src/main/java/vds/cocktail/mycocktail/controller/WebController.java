@@ -42,4 +42,12 @@ public class WebController {
         model.addAttribute("ingredients", ingredients);
         return "detail";
     }
+
+    @GetMapping("ask")
+    public String ask(Model model) {
+        List<Ingredient> ingredients = ingredientRepository.findAll();
+        LOGGER.info("ask view found {} ingredients", ingredients.size());
+        model.addAttribute("ingredients", ingredients);
+        return "ask";
+    }
 }

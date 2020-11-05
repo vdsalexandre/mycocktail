@@ -14,6 +14,31 @@
         <div class="content">
             <section>
                 <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th th:text="'alcool'"></th>
+                            <th th:text="'Soft'"></th>
+                            <th th:text="'Autre'"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="ingredient : ${ingredients}">
+                            <td th:if="${ingredient.typeIngredient == 'alcool'}">
+                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'alcool'" th:value="${ingredient.nomIngredient}">
+                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                            </td>
+                            <td th:if="${ingredient.typeIngredient == 'soft'}">
+                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'soft'" th:value="${ingredient.nomIngredient}">
+                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                            </td>
+                            <td th:unless="${ingredient.typeIngredient == 'autre'}">
+                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'soft'" th:value="${ingredient.nomIngredient}">
+                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
             </section>
         </div>
 
