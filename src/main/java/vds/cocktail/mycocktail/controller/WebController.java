@@ -3,6 +3,7 @@ package vds.cocktail.mycocktail.controller;
 import org.apache.logging.log4j.LogManager;
 import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,6 +13,9 @@ import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
 import vds.cocktail.mycocktail.repository.IngredientRepository;
 
+import javax.annotation.PostConstruct;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.List;
 
 @Controller
@@ -23,6 +27,12 @@ public class WebController {
 
     @Autowired
     private IngredientRepository ingredientRepository;
+
+    @Value("${server.port}")
+    private int serverPort;
+
+    @Value("${server.servlet.context-path}")
+    private String serverContextPath;
 
     @GetMapping(value = {"/", "/home"})
     public String home(Model model) {
@@ -53,5 +63,13 @@ public class WebController {
         model.addAttribute("softs", softs);
         model.addAttribute("autres", autres);
         return "ask";
+    }
+
+    @PostConstruct
+    private void onControllerReady() throws UnknownHostException {
+        String host = InetAddress.getLocalHost().getHostAddress();
+        LOGGER.info("----------------------------------------------------------");
+        LOGGER.info("| Application ready : http://{}:{}{}/", host, serverPort, serverContextPath);
+        LOGGER.info("----------------------------------------------------------");
     }
 }
