@@ -32,7 +32,7 @@ public class WebController {
         return "home";
     }
 
-    @GetMapping("detail/{idCocktail}")
+    @GetMapping("/detail/{idCocktail}")
     public String detail(@PathVariable Long idCocktail, Model model) {
         Cocktail cocktail = cocktailRepository.findByIdCocktail(idCocktail);
         LOGGER.info("find all ingredients for '{}'", cocktail.getNomCocktail());
@@ -43,7 +43,7 @@ public class WebController {
         return "detail";
     }
 
-    @GetMapping("ask")
+    @GetMapping("/ask")
     public String ask(Model model) {
         List<Ingredient> alcools = ingredientRepository.findIngredientsByTypeIngredient("alcool");
         List<Ingredient> softs = ingredientRepository.findIngredientsByTypeIngredient("soft");
