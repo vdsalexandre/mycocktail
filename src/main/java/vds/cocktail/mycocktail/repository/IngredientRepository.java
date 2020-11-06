@@ -25,4 +25,5 @@ public interface IngredientRepository extends JpaRepository<Ingredient, Long> {
                     "WHERE COC.id_cocktail = :idCocktail", nativeQuery = true)
     List<Ingredient> findIngredientsByIdCocktail(@Param("idCocktail") Long idCocktail);
 
+    List<Ingredient> findIngredientsByTypeIngredient(String typeIngredient);
 }

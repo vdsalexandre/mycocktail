@@ -3,38 +3,59 @@
     <head>
         <meta charset="UTF-8">
         <link rel="icon" type="image/png" href="../img/cocktail.png">
+        <link rel="stylesheet" href="../css/style.css" type="text/css">
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <title th:text="'Where is my cocktail'"></title>
     </head>
     <body>
-        <header>
+        <header class="center">
             <h1 th:text="'Where is my cocktail'"></h1>
         </header>
 
-        <div class="content">
+        <div class="content center">
             <section>
                 <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
                 <table>
                     <thead>
                         <tr>
-                            <th th:text="'alcool'"></th>
-                            <th th:text="'Soft'"></th>
-                            <th th:text="'Autre'"></th>
+                            <th>alcool</th>
                         </tr>
                     </thead>
                     <tbody>
-                        <tr th:each="ingredient : ${ingredients}">
-                            <td th:if="${ingredient.typeIngredient == 'alcool'}">
-                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'alcool'" th:value="${ingredient.nomIngredient}">
-                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                        <tr th:each="alcool : ${alcools}">
+                            <td>
+                                <input type="checkbox" th:id="${alcool.idIngredient}">
+                                <label th:for="${alcool.idIngredient}" th:text="${alcool.nomIngredient}"></label>
                             </td>
-                            <td th:if="${ingredient.typeIngredient == 'soft'}">
-                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'soft'" th:value="${ingredient.nomIngredient}">
-                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>soft</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="soft : ${softs}">
+                            <td>
+                                <input type="checkbox" th:id="${soft.idIngredient}">
+                                <label th:for="${soft.idIngredient}" th:text="${soft.nomIngredient}"></label>
                             </td>
-                            <td th:unless="${ingredient.typeIngredient == 'autre'}">
-                                <input type="checkbox" th:id="${ingredient.idIngredient}" th:name="'soft'" th:value="${ingredient.nomIngredient}">
-                                <label th:for="${ingredient.idIngredient}" th:text="${ingredient.nomIngredient}"></label>
+                        </tr>
+                    </tbody>
+                </table>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>autre</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="autre : ${autres}">
+                            <td>
+                                <input type="checkbox" th:id="${autre.idIngredient}">
+                                <label th:for="${autre.idIngredient}" th:text="${autre.nomIngredient}"></label>
                             </td>
                         </tr>
                     </tbody>

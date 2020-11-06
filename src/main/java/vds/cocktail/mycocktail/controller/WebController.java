@@ -45,9 +45,13 @@ public class WebController {
 
     @GetMapping("ask")
     public String ask(Model model) {
-        List<Ingredient> ingredients = ingredientRepository.findAll();
-        LOGGER.info("ask view found {} ingredients", ingredients.size());
-        model.addAttribute("ingredients", ingredients);
+        List<Ingredient> alcools = ingredientRepository.findIngredientsByTypeIngredient("alcool");
+        List<Ingredient> softs = ingredientRepository.findIngredientsByTypeIngredient("soft");
+        List<Ingredient> autres = ingredientRepository.findIngredientsByTypeIngredient("autre");
+        LOGGER.info("ask view found {} alcools, {} softs and {} autres", alcools.size(), softs.size(), autres.size());
+        model.addAttribute("alcools", alcools);
+        model.addAttribute("softs", softs);
+        model.addAttribute("autres", autres);
         return "ask";
     }
 }
