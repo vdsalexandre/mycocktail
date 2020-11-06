@@ -17,3 +17,4 @@
 | URL                                                  | RESULT                                         |
 |------------------------------------------------------|------------------------------------------------|
 | http://localhost:8080/                               | home                                           |
+| http://localhost:8080/ask                            | find a cocktail that contains <ingredient>     |
