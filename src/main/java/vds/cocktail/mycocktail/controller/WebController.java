@@ -70,6 +70,7 @@ public class WebController {
         String host = InetAddress.getLocalHost().getHostAddress();
         LOGGER.info("----------------------------------------------------------");
         LOGGER.info("| Application ready : http://{}:{}{}/", host, serverPort, serverContextPath);
+        LOGGER.info("| Application ask : http://{}:{}{}/ask/", host, serverPort, serverContextPath);
         LOGGER.info("----------------------------------------------------------");
     }
 }
