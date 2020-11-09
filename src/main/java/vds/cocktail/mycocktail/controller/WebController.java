@@ -67,11 +67,13 @@ public class WebController {
         return "ask";
     }
 
-    @GetMapping("/searchcocktail/")
-    public String searchCocktail(@RequestParam List<Long> ingredients, Model model) {
+    @GetMapping("/searchcocktail")
+    public String searchCocktail(@RequestParam(value = "ingredient") List<Long> ingredients, Model model) {
         List<Cocktail> cocktails = cocktailRepository.findCocktailsContainingIngredients(ingredients);
-        LOGGER.info("ask cocktails view, {} cocktail(s) found", cocktails.size());
+        List<Ingredient> ingredientList = ingredientRepository.findIngredientsByIdIngredientIn(ingredients);
+        LOGGER.info("ask cocktails view, {} cocktail(s) found that contains {} ingredients", cocktails.size(), ingredientList.size());
         model.addAttribute("cocktails", cocktails);
+        model.addAttribute("ingredients", ingredientList);
         return "cocktails";
     }
 

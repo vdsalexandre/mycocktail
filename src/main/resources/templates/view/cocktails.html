@@ -9,9 +9,26 @@
         <div class="content center">
             <section>
                 <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
-                <p th:id="'pListIngredient'"></p>
-
-                <h1>COCKTAILS</h1>
+                <p th:id="'pListIngredient'">
+                    <th:block th:each="ingredient : ${ingredients}">
+                        <label th:text="${ingredient.nomIngredient}"></label>
+                    </th:block>
+                </p>
+<!--                <div class="div-ingredient">-->
+<!--                    <ul>-->
+<!--                        <li th:each="ingredient : ${ingredients}">-->
+<!--                            <label th:text="${ingredient.nomIngredient}"></label>-->
+<!--                        </li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+                <div>
+                    <ul>
+                        <li th:each="cocktail : ${cocktails}">
+                            <span th:text="${cocktail.nomCocktail}"></span>
+                            <span th:text="${cocktail.recetteCocktail}"></span>
+                        </li>
+                    </ul>
+                </div>
             </section>
         </div>
 

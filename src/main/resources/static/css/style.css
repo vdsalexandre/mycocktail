@@ -10,6 +10,11 @@ header {
     height: 60px;
 }
 
+header a {
+    text-decoration: none;
+    color: black;
+}
+
 h1 {
     line-height: 60px;
 }
@@ -73,7 +78,6 @@ section {
 .aSearchButton {
     width: 50%;
     height: 50px;
-    /*border: solid black 1px;*/
     border-radius: 7px;
     text-decoration: none;
     display: inline-block;
