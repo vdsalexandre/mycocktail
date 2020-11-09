@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
@@ -63,6 +65,14 @@ public class WebController {
         model.addAttribute("softs", softs);
         model.addAttribute("autres", autres);
         return "ask";
+    }
+
+    @GetMapping("/searchcocktail/")
+    public String searchCocktail(@RequestParam List<Long> ingredients, Model model) {
+        List<Cocktail> cocktails = cocktailRepository.findCocktailsContainingIngredients(ingredients);
+        LOGGER.info("ask cocktails view, {} cocktail(s) found", cocktails.size());
+        model.addAttribute("cocktails", cocktails);
+        return "cocktails";
     }
 
     @PostConstruct

@@ -22,8 +22,18 @@ label {
     cursor: pointer;
 }
 
-li {
+ul {
+    display: inline-block;
+}
+
+ul li {
     list-style: none;
+    background: aqua;
+    border: black 1px;
+    border-radius: 5px;
+    display: inline-block;
+    margin: 6px;
+    padding: 4px;
 }
 
 h3, #pListIngredient {
@@ -42,8 +52,7 @@ h4 {
 
 section {
     background: linear-gradient(90deg, rgba(77,77,77,1) 0%, rgba(30,127,203,1) 35%, rgba(119,181,254,1) 100%);
-    margin-left: 7px;
-    margin-right: 7px;
+    margin-bottom: 20px;
 }
 
 .center {
@@ -53,4 +62,28 @@ section {
 
 .div-ingredient {
     display: inline-block;
+    width: auto;
+}
+
+.liSelected {
+    font-weight: bolder;
+    border: solid red 3px;
+}
+
+.aSearchButton {
+    width: 50%;
+    height: 50px;
+    /*border: solid black 1px;*/
+    border-radius: 7px;
+    text-decoration: none;
+    display: inline-block;
+    line-height: 50px;
+    color: black;
+    font-size: 18px;
+    font-weight: bolder;
+    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+}
+
+.aSearchButton:hover {
+    font-size: 20px;
 }

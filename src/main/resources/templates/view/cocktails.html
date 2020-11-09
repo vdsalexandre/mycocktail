@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <div th:replace="fragment/includes :: includes"></div>
+    </head>
+    <body>
+        <div th:replace="fragment/header :: header"></div>
+
+        <div class="content center">
+            <section>
+                <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
+                <p th:id="'pListIngredient'"></p>
+
+                <h1>COCKTAILS</h1>
+            </section>
+        </div>
+
+        <div th:replace="fragment/footer :: footer"></div>
+
+        <div th:replace="fragment/script :: script"></div>
+    </body>
+</html>
