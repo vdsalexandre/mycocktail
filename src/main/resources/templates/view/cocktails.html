@@ -10,9 +10,7 @@
             <section>
                 <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
                 <p th:id="'pListIngredient'">
-                    <th:block th:each="ingredient : ${ingredients}">
-                        <label th:text="${ingredient.nomIngredient}"></label>
-                    </th:block>
+                    <th:block th:each="ingredient, iterator : ${ingredients}" th:text="${iterator.index < ingredients.size()-1} ? ${ingredient.nomIngredient} + ', ' : ${ingredient.nomIngredient}"></th:block>
                 </p>
 <!--                <div class="div-ingredient">-->
 <!--                    <ul>-->
