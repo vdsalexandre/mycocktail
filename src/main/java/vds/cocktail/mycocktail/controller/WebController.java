@@ -8,7 +8,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
@@ -18,6 +17,7 @@ import vds.cocktail.mycocktail.repository.IngredientRepository;
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -44,22 +44,22 @@ public class WebController {
         return "home";
     }
 
-    @GetMapping("/detail/{idCocktail}")
-    public String detail(@PathVariable Long idCocktail, Model model) {
-        Cocktail cocktail = cocktailRepository.findByIdCocktail(idCocktail);
-        LOGGER.info("find all ingredients for '{}'", cocktail.getNomCocktail());
-        List<Ingredient> ingredients = ingredientRepository.findIngredientsByIdCocktail(cocktail.getIdCocktail());
-        model.addAttribute("recetteCocktail", cocktail.getRecetteCocktail());
-        model.addAttribute("nomCocktail", cocktail.getNomCocktail());
-        model.addAttribute("ingredients", ingredients);
-        return "detail";
-    }
+//    @GetMapping("/detail/{idCocktail}")
+//    public String detail(@PathVariable Long idCocktail, Model model) {
+//        Cocktail cocktail = cocktailRepository.findByIdCocktail(idCocktail);
+//        LOGGER.info("find all ingredients for '{}'", cocktail.getNomCocktail());
+//        List<Ingredient> ingredients = ingredientRepository.findIngredientsByIdCocktail(cocktail.getIdCocktail());
+//        model.addAttribute("recetteCocktail", cocktail.getRecetteCocktail());
+//        model.addAttribute("nomCocktail", cocktail.getNomCocktail());
+//        model.addAttribute("ingredients", ingredients);
+//        return "detail";
+//    }
 
     @GetMapping("/ask")
     public String ask(Model model) {
         List<Ingredient> alcools = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("alcool");
-        List<Ingredient> softs = ingredientRepository.findIngredientsByTypeIngredient("soft");
-        List<Ingredient> autres = ingredientRepository.findIngredientsByTypeIngredient("autre");
+        List<Ingredient> softs = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("soft");
+        List<Ingredient> autres = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("autre");
         LOGGER.info("ask view found {} alcools, {} softs and {} autres", alcools.size(), softs.size(), autres.size());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);

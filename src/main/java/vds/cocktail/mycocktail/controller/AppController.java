@@ -5,6 +5,7 @@ import org.apache.logging.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
@@ -24,6 +25,7 @@ public class AppController {
     IngredientRepository ingredientRepository;
 
     @GetMapping("cocktail/all")
+    @ResponseBody
     public List<Cocktail> findAll() {
         LOGGER.info("find all cocktails in database");
         return cocktailRepository.findAll();
@@ -41,11 +43,11 @@ public class AppController {
         return cocktailRepository.findCocktailContainingIngredient(nomIngredient);
     }
 
-    @GetMapping("ingredient/{nomCocktail}")
-    public List<Ingredient> findIngredientsFromCocktail(@PathVariable String nomCocktail) {
-        LOGGER.info("find all ingredient(s) from '{}'", nomCocktail);
-        return ingredientRepository.findIngredientsFromCocktail(nomCocktail);
-    }
+//    @GetMapping("ingredient/{nomCocktail}")
+//    public List<Ingredient> findIngredientsFromCocktail(@PathVariable String nomCocktail) {
+//        LOGGER.info("find all ingredient(s) from '{}'", nomCocktail);
+//        return ingredientRepository.findIngredientsFromCocktail(nomCocktail);
+//    }
 
     @GetMapping("ingredient/all")
     public List<Ingredient> findAllIngredient() {

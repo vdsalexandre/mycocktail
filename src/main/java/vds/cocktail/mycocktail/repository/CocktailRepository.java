@@ -11,6 +11,8 @@ import java.util.List;
 @Repository
 public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
 
+//    @Query(value = "SELECT DISTINCT c FROM Cocktail c ORDER BY c.nomCocktail")
+//    List<Cocktail> findAllCocktails();
     List<Cocktail> findAll();
 
     Cocktail findByNomCocktail(String nomCocktail);

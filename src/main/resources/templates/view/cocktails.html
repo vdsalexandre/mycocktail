@@ -12,18 +12,16 @@
                 <p th:id="'pListIngredient'">
                     <th:block th:each="ingredient, iterator : ${ingredients}" th:text="${iterator.index < ingredients.size()-1} ? ${ingredient.nomIngredient} + ', ' : ${ingredient.nomIngredient}"></th:block>
                 </p>
-<!--                <div class="div-ingredient">-->
-<!--                    <ul>-->
-<!--                        <li th:each="ingredient : ${ingredients}">-->
-<!--                            <label th:text="${ingredient.nomIngredient}"></label>-->
-<!--                        </li>-->
-<!--                    </ul>-->
-<!--                </div>-->
                 <div>
                     <ul>
                         <li th:each="cocktail : ${cocktails}">
                             <span th:text="${cocktail.nomCocktail}"></span>
                             <span th:text="${cocktail.recetteCocktail}"></span>
+                            <ul>
+                                <li th:each="ingredient : ${cocktail.ingredients}">
+                                    <p th:text="${ingredient.nomIngredient}"></p>
+                                </li>
+                            </ul>
                         </li>
                     </ul>
                 </div>
