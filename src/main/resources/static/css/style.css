@@ -32,6 +32,7 @@ ul {
 }
 
 ul li {
+    font-size: 20px;
     list-style: none;
     background: #00CCFF;
     border: black 1px;
@@ -47,6 +48,7 @@ h3, #pListIngredient {
 }
 
 h4 {
+    font-size: 22px;
     cursor: pointer;
     height: 40px;
     border: solid black 1px;
@@ -87,7 +89,7 @@ input[type="checkbox"] {
     display: inline-block;
     line-height: 50px;
     color: black;
-    font-size: 18px;
+    font-size: 22px;
     font-weight: bolder;
     background: linear-gradient(270deg, rgba(255,69,0,1) 25%, rgba(18,10,143,1) 100%);
 }
