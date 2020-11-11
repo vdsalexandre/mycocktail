@@ -30,6 +30,15 @@ $(function () {
         p.text(arrayToString(ingredients));
         updateSearchUrl();
     });
+
+    $('#aSearchCocktail').click(function (e) {
+        let href = $(this).attr('href');
+        let urlElements = href.split('?');
+
+        if (urlElements.length !== 2) {
+            e.preventDefault();
+        }
+    });
 });
 
 function arrayToString(elements) {
