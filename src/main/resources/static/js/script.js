@@ -35,7 +35,7 @@ $(function () {
         let href = $(this).attr('href');
         let urlElements = href.split('?');
 
-        if (urlElements.length !== 2) {
+        if (urlElements.length !== 2 || urlElements[1].length === 0) {
             e.preventDefault();
         }
     });
