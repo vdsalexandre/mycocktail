@@ -33,12 +33,12 @@ ul {
 
 ul li {
     list-style: none;
-    background: aqua;
+    background: #00CCFF;
     border: black 1px;
     border-radius: 5px;
     display: inline-block;
-    margin: 6px;
-    padding: 4px;
+    margin: 4px;
+    padding: 6px;
 }
 
 h3, #pListIngredient {
@@ -58,6 +58,10 @@ h4 {
 section {
     background: linear-gradient(90deg, rgba(77,77,77,1) 0%, rgba(30,127,203,1) 35%, rgba(119,181,254,1) 100%);
     margin-bottom: 20px;
+}
+
+input[type="checkbox"] {
+    display: none;
 }
 
 .center {
@@ -85,7 +89,7 @@ section {
     color: black;
     font-size: 18px;
     font-weight: bolder;
-    background-image: linear-gradient(160deg, #0093E9 0%, #80D0C7 100%);
+    background: linear-gradient(270deg, rgba(255,69,0,1) 25%, rgba(18,10,143,1) 100%);
 }
 
 .aSearchButton:hover {

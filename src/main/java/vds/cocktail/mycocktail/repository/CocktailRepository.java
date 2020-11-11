@@ -11,13 +11,7 @@ import java.util.List;
 @Repository
 public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
 
-//    @Query(value = "SELECT DISTINCT c FROM Cocktail c ORDER BY c.nomCocktail")
-//    List<Cocktail> findAllCocktails();
     List<Cocktail> findAll();
-
-    Cocktail findByNomCocktail(String nomCocktail);
-
-    Cocktail findByIdCocktail(Long idCocktail);
 
     @Query(value = "SELECT COC.* FROM public.ingredient ING INNER JOIN public.composer COM " +
             "ON ING.id_ingredient = COM.id_ingredient INNER JOIN public.cocktail COC ON COM.id_cocktail = COC.id_cocktail " +
@@ -25,7 +19,7 @@ public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
     List<Cocktail> findCocktailContainingIngredient(@Param("nomIngredient") String nomIngredient);
 
     @Query(value = "SELECT DISTINCT C.* FROM composer O JOIN ingredient I ON O.id_ingredient = I.id_ingredient " +
-                    "JOIN cocktail C ON C.id_cocktail = O.id_cocktail WHERE O.id_ingredient IN ?1 " +
-                    "GROUP BY C.id_cocktail HAVING COUNT (DISTINCT O.id_ingredient) = ?2", nativeQuery = true)
+            "JOIN cocktail C ON C.id_cocktail = O.id_cocktail WHERE O.id_ingredient IN ?1 " +
+            "GROUP BY C.id_cocktail HAVING COUNT (DISTINCT O.id_ingredient) = ?2", nativeQuery = true)
     List<Cocktail> findCocktailsContainingIngredients(List<Long> idIngredients, Integer nbrIngredients);
 }
