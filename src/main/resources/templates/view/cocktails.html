@@ -7,25 +7,22 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <section>
-                <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
-                <p th:id="'pListIngredient'">
-                    <th:block th:each="ingredient, iterator : ${ingredients}" th:text="${iterator.index < ingredients.size()-1} ? ${ingredient.nomIngredient} + ', ' : ${ingredient.nomIngredient}"></th:block>
-                </p>
-                <div>
-                    <ul>
-                        <li th:each="cocktail : ${cocktails}">
-                            <span th:text="${cocktail.nomCocktail}"></span>
-                            <span th:text="${cocktail.recetteCocktail}"></span>
-                            <ul>
-                                <li th:each="ingredient : ${cocktail.ingredients}">
-                                    <p th:text="${ingredient.nomIngredient}"></p>
-                                </li>
-                            </ul>
-                        </li>
-                    </ul>
-                </div>
-            </section>
+            <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
+            <p th:id="'pListIngredient'">
+                <th:block th:each="ingredient, iterator : ${ingredients}"
+                          th:text="${iterator.index < ingredients.size()-1}
+                          ? ${ingredient.nomIngredient} + ', ' : ${ingredient.nomIngredient}">
+                </th:block>
+            </p>
+            <div th:class="'div-cocktail'" th:each="cocktail : ${cocktails}">
+                <h4 th:class="'h4-cocktail'" th:text="${cocktail.nomCocktail}"></h4>
+                <h5 th:text="'Ingredients'"></h5>
+                <ul>
+                    <li th:each="ingredient : ${cocktail.ingredients}" th:text="${ingredient.nomIngredient}"></li>
+                </ul>
+                <h5 th:text="'Recette et préparation :'"></h5>
+                <a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}" th:target="_blank"></a>
+            </div>
         </div>
 
         <div th:replace="fragment/footer :: footer"></div>
