@@ -4,6 +4,6 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.PropertySource;
 
 @Configuration
-@PropertySource(value = "encrypted.properties")
+@PropertySource(value = "classpath:/config/encrypted.properties")
 public class AppJasyptConfig {
 }
