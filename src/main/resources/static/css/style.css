@@ -133,5 +133,4 @@ input[type="checkbox"] {
 .p-selected {
     color: orangered;
     font-weight: bold;
-    text-shadow: black 1px 1px 1px;
 }
