@@ -7,39 +7,7 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <section>
-                <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
-                <p th:id="'pListIngredient'"></p>
-                <div th:id="'accordion'">
-                    <h4 th:text="'Alcools'"></h4>
-                    <div class="div-ingredient">
-                        <ul>
-                            <li th:each="alcool : ${alcools}">
-                                <input type="checkbox" th:id="${alcool.idIngredient}" th:value="${alcool.nomIngredient}">
-                                <label th:for="${alcool.idIngredient}" th:text="${alcool.nomIngredient}"></label>
-                            </li>
-                        </ul>
-                    </div>
-                    <h4 th:text="'Softs'"></h4>
-                    <div class="div-ingredient">
-                        <ul th:each="soft : ${softs}">
-                            <li>
-                                <input type="checkbox" th:id="${soft.idIngredient}" th:value="${soft.nomIngredient}">
-                                <label th:for="${soft.idIngredient}" th:text="${soft.nomIngredient}"></label>
-                            </li>
-                        </ul>
-                    </div>
-                    <h4 th:text="'Autres'"></h4>
-                    <div class="div-ingredient">
-                        <ul th:each="autre : ${autres}">
-                            <li>
-                                <input type="checkbox" th:id="${autre.idIngredient}" th:value="${autre.nomIngredient}">
-                                <label th:for="${autre.idIngredient}" th:text="${autre.nomIngredient}"></label>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            </section>
+            <div th:replace="fragment/ingredients :: ingredients"></div>
             <a th:id="aSearchCocktail" th:href="'/mycocktail/searchcocktail?'" th:text="'Rechercher !'" th:class="aSearchButton"></a>
         </div>
 
