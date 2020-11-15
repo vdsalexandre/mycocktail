@@ -6,5 +6,5 @@
 
 | URL                                                  | RESULT                                         |
 |------------------------------------------------------|------------------------------------------------|
-| http://localhost:9090/mycocktail/                    | home                                           |
-| http://localhost:9090/mycocktail/ask                 | find a cocktail that contains <*ingredient*>   |
+| http://localhost:9090/mycocktail/                    | find a cocktail that contains <*ingredient*>   |
+| http://localhost:9090/mycocktail/admin               | admin menu --> add cocktail                    |

@@ -41,15 +41,7 @@ public class WebController {
     private List<Ingredient> softs = new ArrayList<>();
     private List<Ingredient> autres = new ArrayList<>();
 
-    @GetMapping(value = {"/", "/home"})
-    public String home(Model model) {
-        List<Cocktail> cocktails = cocktailRepository.findAll();
-        LOGGER.info("returning home view with list of cocktails ({} cocktails found)", cocktails.size());
-        model.addAttribute("cocktails", cocktails);
-        return "home";
-    }
-
-    @GetMapping("/ask")
+    @GetMapping("/")
     public String ask(Model model) {
         getAllIngredients();
         LOGGER.info("ask view found {} alcools, {} softs and {} autres", alcools.size(), softs.size(), autres.size());
@@ -78,13 +70,13 @@ public class WebController {
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
         model.addAttribute("autres", autres);
-        return "admin/admin";
+        return "admin/addCocktail";
     }
 
     @PostMapping("/admin/add")
     public String addCocktail(@RequestBody Cocktail cocktail, @RequestBody List<Ingredient> ingredients) {
 
-        return "admin/admin";
+        return "admin/addCocktail";
     }
 
     @PostConstruct
@@ -92,7 +84,7 @@ public class WebController {
         String host = InetAddress.getLocalHost().getHostAddress();
         LOGGER.info("----------------------------------------------------------");
         LOGGER.info("| Application ready : http://{}:{}{}/", host, serverPort, serverContextPath);
-        LOGGER.info("| Application ask : http://{}:{}{}/ask/", host, serverPort, serverContextPath);
+        LOGGER.info("| Application admin : http://{}:{}{}/admin/", host, serverPort, serverContextPath);
         LOGGER.info("----------------------------------------------------------");
     }
 

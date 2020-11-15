@@ -141,3 +141,12 @@ table {
     color: orangered;
     font-weight: bold;
 }
+
+.td-center-right {
+    text-align: right;
+}
+
+.td-center-left {
+    text-align: left;
+    text-indent: 10px;
+}
