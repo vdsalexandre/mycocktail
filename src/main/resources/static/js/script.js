@@ -39,6 +39,15 @@ $(function () {
             e.preventDefault();
         }
     });
+
+    $('.p-ingredient').each(function () {
+        const ingredients = $('#pListIngredient').text();
+        let ingredient = $(this).text();
+        ingredient = ingredient.replace("-", "").trim();
+        if (ingredients.includes(ingredient)) {
+            $(this).addClass('p-selected');
+        }
+    });
 });
 
 function arrayToString(elements) {

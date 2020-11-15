@@ -57,6 +57,13 @@ h4 {
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(8,88,0,1) 35%, rgba(94,255,8,1) 100%);
 }
 
+h5 {
+    text-align: left;
+    text-indent: 30px;
+    font-size: 18px;
+    font-weight: bold;
+}
+
 section {
     background: linear-gradient(90deg, rgba(77,77,77,1) 0%, rgba(30,127,203,1) 35%, rgba(119,181,254,1) 100%);
     margin-bottom: 20px;
@@ -104,7 +111,26 @@ input[type="checkbox"] {
 
 .h4-cocktail {
     text-align: left;
-    text-indent: 20px;
+    text-indent: 10px;
     background: linear-gradient(270deg, rgba(255,69,0,1) 25%, rgba(18,10,143,1) 100%);
     color: white;
+}
+
+.p-ingredient {
+    text-align: left;
+    text-indent: 50px;
+    font-size: 18px;
+}
+
+.p-ingredient a {
+    text-decoration: none;
+    font-size: 20px;
+    font-weight: bold;
+    color: #3F2204;
+}
+
+.p-selected {
+    color: orangered;
+    font-weight: bold;
+    text-shadow: black 1px 1px 1px;
 }

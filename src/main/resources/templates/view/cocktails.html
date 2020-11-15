@@ -16,12 +16,13 @@
             </p>
             <div th:class="'div-cocktail'" th:each="cocktail : ${cocktails}">
                 <h4 th:class="'h4-cocktail'" th:text="${cocktail.nomCocktail}"></h4>
-                <h5 th:text="'Ingredients'"></h5>
-                <ul>
-                    <li th:each="ingredient : ${cocktail.ingredients}" th:text="${ingredient.nomIngredient}"></li>
-                </ul>
+                <h5 th:text="'Ingredients :'"></h5>
+                <p th:each="ingredient : ${cocktail.ingredients}"
+                      th:text="'- ' + ${ingredient.nomIngredient}" th:class="'p-ingredient'"></p>
                 <h5 th:text="'Recette et préparation :'"></h5>
-                <a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}" th:target="_blank"></a>
+                <p th:class="'p-ingredient'">
+                    <a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}" th:target="'_blank'"></a>
+                </p>
             </div>
         </div>
 
