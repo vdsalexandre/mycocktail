@@ -7,23 +7,22 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <h3 th:text="'Ajouter un cocktail'"></h3>
-            <p th:id="'pListIngredient'">
-                <th:block th:each="ingredient, iterator : ${ingredients}"
-                          th:text="${iterator.index < ingredients.size()-1}
-                                  ? ${ingredient.nomIngredient} + ', ' : ${ingredient.nomIngredient}">
-                </th:block>
-            </p>
-            <div th:class="'div-cocktail'" th:each="cocktail : ${cocktails}">
-                <h4 th:class="'h4-cocktail'" th:text="${cocktail.nomCocktail}"></h4>
-                <h5 th:text="'Ingredients :'"></h5>
-                <p th:each="ingredient : ${cocktail.ingredients}"
-                   th:text="'- ' + ${ingredient.nomIngredient}" th:class="'p-ingredient'"></p>
-                <h5 th:text="'Recette et préparation :'"></h5>
-                <p th:class="'p-ingredient'">
-                    <a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}" th:target="'_blank'"></a>
-                </p>
-            </div>
+            <form method="post" th:action="'/admin/add'">
+                <h3 th:text="'Ajouter un nouveau cocktail'"></h3>
+                <table th:class="center">
+                    <tbody>
+                        <tr>
+                            <td th:text="'Nom du cocktail : '"></td>
+                            <td><input th:type="'text'" th:name="'cocktailname'"></td>
+                        </tr>
+                        <tr>
+                            <td th:text="'Ingrédients du cocktail : '" colspan="2"></td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p th:id="'pListIngredient'"></p>
+                <div th:replace="fragment/ingredients :: ingredients"></div>
+            </form>
         </div>
 
         <div th:replace="fragment/footer :: footer"></div>

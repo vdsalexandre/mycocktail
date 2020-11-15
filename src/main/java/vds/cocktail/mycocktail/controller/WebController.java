@@ -7,6 +7,8 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
@@ -16,6 +18,7 @@ import vds.cocktail.mycocktail.repository.IngredientRepository;
 import javax.annotation.PostConstruct;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
+import java.util.ArrayList;
 import java.util.List;
 
 @Controller
@@ -34,6 +37,10 @@ public class WebController {
     @Value("${server.servlet.context-path}")
     private String serverContextPath;
 
+    private List<Ingredient> alcools = new ArrayList<>();
+    private List<Ingredient> softs = new ArrayList<>();
+    private List<Ingredient> autres = new ArrayList<>();
+
     @GetMapping(value = {"/", "/home"})
     public String home(Model model) {
         List<Cocktail> cocktails = cocktailRepository.findAll();
@@ -44,9 +51,7 @@ public class WebController {
 
     @GetMapping("/ask")
     public String ask(Model model) {
-        List<Ingredient> alcools = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("alcool");
-        List<Ingredient> softs = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("soft");
-        List<Ingredient> autres = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("autre");
+        getAllIngredients();
         LOGGER.info("ask view found {} alcools, {} softs and {} autres", alcools.size(), softs.size(), autres.size());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
@@ -66,6 +71,22 @@ public class WebController {
         return "cocktails";
     }
 
+    @GetMapping("/admin")
+    public String admin(Model model) {
+        getAllIngredients();
+        LOGGER.info("admin view");
+        model.addAttribute("alcools", alcools);
+        model.addAttribute("softs", softs);
+        model.addAttribute("autres", autres);
+        return "admin/admin";
+    }
+
+    @PostMapping("/admin/add")
+    public String addCocktail(@RequestBody Cocktail cocktail, @RequestBody List<Ingredient> ingredients) {
+
+        return "admin/admin";
+    }
+
     @PostConstruct
     private void onControllerReady() throws UnknownHostException {
         String host = InetAddress.getLocalHost().getHostAddress();
@@ -73,5 +94,11 @@ public class WebController {
         LOGGER.info("| Application ready : http://{}:{}{}/", host, serverPort, serverContextPath);
         LOGGER.info("| Application ask : http://{}:{}{}/ask/", host, serverPort, serverContextPath);
         LOGGER.info("----------------------------------------------------------");
+    }
+
+    private void getAllIngredients() {
+        alcools = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("alcool");
+        softs = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("soft");
+        autres = ingredientRepository.findIngredientsByTypeIngredientOrderByNomIngredient("autre");
     }
 }

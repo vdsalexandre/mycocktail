@@ -7,7 +7,11 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
+            <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
+            <p th:id="'pListIngredient'"></p>
+
             <div th:replace="fragment/ingredients :: ingredients"></div>
+
             <a th:id="aSearchCocktail" th:href="'/mycocktail/searchcocktail?'" th:text="'Rechercher !'" th:class="aSearchButton"></a>
         </div>
 
