@@ -6,16 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.validation.BindingResult;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
+import org.springframework.web.servlet.view.RedirectView;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
 import vds.cocktail.mycocktail.repository.IngredientRepository;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -67,16 +68,31 @@ public class WebController {
     public String admin(Model model) {
         getAllIngredients();
         LOGGER.info("admin view");
+        model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
         model.addAttribute("autres", autres);
         return "admin/addCocktail";
     }
 
-    @PostMapping("/admin/add")
+    @PostMapping("/admin/cocktail/add")
     public String addCocktail(@RequestBody Cocktail cocktail, @RequestBody List<Ingredient> ingredients) {
 
         return "admin/addCocktail";
+    }
+
+    @PostMapping("/admin/ingredient/add")
+    public RedirectView saveIngredient(@Valid @ModelAttribute Ingredient ingredient, BindingResult errors, RedirectAttributes attributes) {
+        if (!errors.hasErrors()) {
+            LOGGER.info("Nouvel ingrédient à insérer en base : {} - {}", ingredient.getNomIngredient(), ingredient.getTypeIngredient());
+            //   ingredientRepository.save(ingredient);
+        }
+        else {
+            String defaultMessage = errors.getFieldError().getDefaultMessage();
+            LOGGER.warn("Erreur sur l'ajout de l'ingrédient {} - {}", ingredient.getNomIngredient(), defaultMessage);
+            attributes.addAttribute("errorMessage", defaultMessage);
+        }
+        return new RedirectView(serverContextPath + "/admin");
     }
 
     @PostConstruct

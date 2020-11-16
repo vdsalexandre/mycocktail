@@ -7,13 +7,17 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <form method="post" th:action="'/admin/add'">
+            <form method="post" th:action="'/mycocktail/admin/cocktail/add'">
                 <h3 th:text="'Ajouter un nouveau cocktail'"></h3>
                 <table th:class="center">
                     <tbody>
                         <tr>
                             <td th:class="'td-center-right'" th:text="'Nom du cocktail : '"></td>
-                            <td th:class="'td-center-left'"><input th:type="'text'" th:name="'cocktailname'"></td>
+                            <td th:class="'td-center-left'"><input th:type="'text'" th:name="'nomCocktail'" /></td>
+                        </tr>
+                        <tr>
+                            <td th:class="'td-center-right'" th:text="'recette du cocktail : '"></td>
+                            <td th:class="'td-center-left'"><input th:type="'url'" th:name="'recetteCocktail'" /></td>
                         </tr>
                         <tr>
                             <td th:text="'Ingrédients du cocktail : '" colspan="2"></td>
@@ -22,6 +26,33 @@
                 </table>
                 <p th:id="'pListIngredient'"></p>
                 <div th:replace="fragment/ingredients :: ingredients"></div>
+                <input th:type="'submit'" th:value="'Ajouter'">
+            </form>
+
+            <form action="#" th:action="@{/admin/ingredient/add}" th:object="${ingredient}" method="post">
+                <h3 th:text="'Ajouter un nouvel ingrédient'"></h3>
+                <p class="p-error center" th:if="${(param.errorMessage)} != null" th:text="${param.errorMessage[0]}"></p>
+                <table th:class="center">
+                    <tbody>
+                        <tr>
+                            <td th:class="'td-center-right'" th:text="'Nom de l\'ingrédient : '"></td>
+                            <td th:class="'td-center-left'">
+                                <input type="text" th:field="*{nomIngredient}" maxlength="50" />
+                            </td>
+                        </tr>
+                        <tr>
+                            <td th:class="'td-center-right'" th:text="'Type : '"></td>
+                            <td th:class="'td-center-left'">
+                                <select th:field="*{typeIngredient}">
+                                    <option th:value="'alcool'" selected>alcool</option>
+                                    <option th:value="'soft'"></option>
+                                    <option th:value="'autre'">autre</option>
+                                </select>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <input type="submit" value="Ajouter !" />
             </form>
         </div>
 

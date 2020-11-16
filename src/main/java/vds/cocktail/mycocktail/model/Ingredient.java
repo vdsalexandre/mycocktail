@@ -1,6 +1,7 @@
 package vds.cocktail.mycocktail.model;
 
 import lombok.Data;
+import vds.cocktail.mycocktail.annotation.NomIngredient;
 
 import javax.persistence.*;
 import java.io.Serializable;
@@ -18,6 +19,7 @@ public class Ingredient implements Serializable {
     private Long idIngredient;
 
     @Column(name = "nom_ingredient")
+    @NomIngredient
     private String nomIngredient;
 
     @Column(name = "type_ingredient")

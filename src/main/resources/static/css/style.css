@@ -150,3 +150,8 @@ table {
     text-align: left;
     text-indent: 10px;
 }
+
+.p-error {
+    color: red;
+    font-weight: bolder;
+}
