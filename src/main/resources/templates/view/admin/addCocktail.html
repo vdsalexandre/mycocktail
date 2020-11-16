@@ -29,7 +29,7 @@
                 <input th:type="'submit'" th:value="'Ajouter'">
             </form>
 
-            <form action="#" th:action="@{/admin/ingredient/add}" th:object="${ingredient}" method="post">
+            <form action="#" th:action="@{/ingredient/add}" th:object="${ingredient}" method="post">
                 <h3 th:text="'Ajouter un nouvel ingrédient'"></h3>
                 <p class="p-error center" th:if="${(param.errorMessage)} != null" th:text="${param.errorMessage[0]}"></p>
                 <table th:class="center">

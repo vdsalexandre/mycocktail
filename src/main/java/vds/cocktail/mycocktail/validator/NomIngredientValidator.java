@@ -1,5 +1,6 @@
 package vds.cocktail.mycocktail.validator;
 
+import org.hibernate.validator.constraintvalidation.HibernateConstraintValidatorContext;
 import org.springframework.beans.factory.annotation.Autowired;
 import vds.cocktail.mycocktail.annotation.NomIngredient;
 import vds.cocktail.mycocktail.model.Ingredient;
@@ -15,11 +16,13 @@ public class NomIngredientValidator implements ConstraintValidator<NomIngredient
     private IngredientRepository ingredientRepository;
 
     @Override
-    public boolean isValid(String value, ConstraintValidatorContext constraintValidatorContext) {
+    public boolean isValid(String value, ConstraintValidatorContext context) {
         List<Ingredient> ingredients = ingredientRepository.findAll();
         for (Ingredient ingredient : ingredients) {
-            if (ingredient.getNomIngredient().equals(value))
+            if (ingredient.getNomIngredient().equals(value)) {
+                context.unwrap(HibernateConstraintValidatorContext.class).addMessageParameter("nomIngredient", ingredient.getNomIngredient());
                 return false;
+            }
         }
         return true;
     }
