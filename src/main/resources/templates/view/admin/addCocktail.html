@@ -7,17 +7,17 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <form method="post" th:action="'/mycocktail/admin/cocktail/add'">
+            <form method="post" th:action="@{/cocktail/add}" th:object="${cocktail}">
                 <h3 th:text="'Ajouter un nouveau cocktail'"></h3>
                 <table th:class="center">
                     <tbody>
                         <tr>
                             <td th:class="'td-center-right'" th:text="'Nom du cocktail : '"></td>
-                            <td th:class="'td-center-left'"><input th:type="'text'" th:name="'nomCocktail'" /></td>
+                            <td th:class="'td-center-left'"><input type="text" th:field="*{nomCocktail}" /></td>
                         </tr>
                         <tr>
                             <td th:class="'td-center-right'" th:text="'recette du cocktail : '"></td>
-                            <td th:class="'td-center-left'"><input th:type="'url'" th:name="'recetteCocktail'" /></td>
+                            <td th:class="'td-center-left'"><input type="url" th:field="*{recetteCocktail}" /></td>
                         </tr>
                         <tr>
                             <td th:text="'Ingrédients du cocktail : '" colspan="2"></td>

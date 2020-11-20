@@ -6,10 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 import vds.cocktail.mycocktail.model.Cocktail;
 import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
@@ -67,6 +64,8 @@ public class WebController {
     public String admin(Model model) {
         getAllIngredients();
         LOGGER.info("admin view");
+        model.addAttribute("cocktail", new Cocktail());
+        model.addAttribute("ingredients", new ArrayList<Ingredient>());
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
@@ -74,8 +73,8 @@ public class WebController {
         return "admin/addCocktail";
     }
 
-    @PostMapping("/admin/cocktail/add")
-    public String addCocktail(@RequestBody Cocktail cocktail, @RequestBody List<Ingredient> ingredients) {
+    @PostMapping("/cocktail/add")
+    public String addCocktail(@ModelAttribute Cocktail cocktail, @ModelAttribute List<Ingredient> ingredients) {
 
         return "admin/addCocktail";
     }
