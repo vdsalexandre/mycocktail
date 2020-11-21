@@ -1,7 +1,11 @@
 let ingredients = [];
 let ingredientsIds = [];
+let currentUrl = '';
+let isAdmin = false;
 
 $(function () {
+    updateCurrentUrl();
+
     $("#accordion").accordion({
         heightStyle: "content"
     });
@@ -10,11 +14,13 @@ $(function () {
         let element = $(this);
         let ingredient = element.val();
         let ingredientID = element.attr('id');
+        const ingredientType = element.attr('data');
         let p = $('#pListIngredient');
 
         if (element.is(':checked')) {
             ingredients.push(ingredient);
             ingredientsIds.push(ingredientID);
+            addCocktailIngredient(ingredientID, ingredient, ingredientType);
             element.closest('li').addClass('liSelected');
         }
         else {
@@ -28,7 +34,8 @@ $(function () {
         }
 
         p.text(arrayToString(ingredients));
-        updateSearchUrl();
+        if (!isAdmin)
+            updateSearchUrl();
     });
 
     $('#aSearchCocktail').click(function (e) {
@@ -72,4 +79,20 @@ function updateSearchUrl() {
     }
     searchUrl = searchUrl.substring(0, searchUrl.length - 1);
     searchElement.attr('href', searchUrl);
+}
+
+function addCocktailIngredient(id, name, type) {
+    console.log(id + " - " + name + " - " + type);
+    const index = ingredientsIds.length - 1;
+    $('#div-cocktail-ingredients')
+        .append("<div>" +
+                    "<input type='hidden' id='ingredients[" + index + "].idIngredient' name='ingredients[" + index + "].idIngredient' th:value='" + id + "' />" +
+                    "<input type='hidden' id='ingredients[" + index + "].nomIngredient' name='ingredients[" + index + "].nomIngredient' th:value='" + name + "' />" +
+                    "<input type='hidden' id='ingredients[" + index + "].typeIngredient' name='ingredients[" + index + "].typeIngredient' th:value='" + type + "' />" +
+                "</div>");
+}
+
+function updateCurrentUrl() {
+    currentUrl = window.location.href;
+    isAdmin = currentUrl.indexOf("admin") !== -1;
 }

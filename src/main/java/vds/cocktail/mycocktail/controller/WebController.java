@@ -6,8 +6,13 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.view.RedirectView;
 import vds.cocktail.mycocktail.model.Cocktail;
+import vds.cocktail.mycocktail.model.CocktailDto;
 import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
 import vds.cocktail.mycocktail.repository.IngredientRepository;
@@ -64,8 +69,7 @@ public class WebController {
     public String admin(Model model) {
         getAllIngredients();
         LOGGER.info("admin view");
-        model.addAttribute("cocktail", new Cocktail());
-        model.addAttribute("ingredients", new ArrayList<Ingredient>());
+        model.addAttribute("cocktailDto", new CocktailDto());
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
@@ -74,9 +78,10 @@ public class WebController {
     }
 
     @PostMapping("/cocktail/add")
-    public String addCocktail(@ModelAttribute Cocktail cocktail, @ModelAttribute List<Ingredient> ingredients) {
+    public RedirectView addCocktail(@ModelAttribute CocktailDto cocktailDto) {
 
-        return "admin/addCocktail";
+        LOGGER.info("{} - {} : {}", cocktailDto.getCocktail().getNomCocktail(), cocktailDto.getCocktail().getRecetteCocktail(), cocktailDto.getIngredients().size());
+        return new RedirectView(serverContextPath + "/admin");
     }
 
     @PostConstruct

@@ -7,17 +7,17 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <form method="post" th:action="@{/cocktail/add}" th:object="${cocktail}">
+            <form action="#" method="post" th:action="@{/cocktail/add}" th:object="${cocktailDto}">
                 <h3 th:text="'Ajouter un nouveau cocktail'"></h3>
                 <table th:class="center">
                     <tbody>
                         <tr>
                             <td th:class="'td-center-right'" th:text="'Nom du cocktail : '"></td>
-                            <td th:class="'td-center-left'"><input type="text" th:field="*{nomCocktail}" /></td>
+                            <td th:class="'td-center-left'"><input type="text" th:field="*{cocktail.nomCocktail}" /></td>
                         </tr>
                         <tr>
                             <td th:class="'td-center-right'" th:text="'recette du cocktail : '"></td>
-                            <td th:class="'td-center-left'"><input type="url" th:field="*{recetteCocktail}" /></td>
+                            <td th:class="'td-center-left'"><input type="url" th:field="*{cocktail.recetteCocktail}" /></td>
                         </tr>
                         <tr>
                             <td th:text="'Ingrédients du cocktail : '" colspan="2"></td>
@@ -26,7 +26,8 @@
                 </table>
                 <p th:id="'pListIngredient'"></p>
                 <div th:replace="fragment/ingredients :: ingredients"></div>
-                <input th:type="'submit'" th:value="'Ajouter'">
+                <div id="div-cocktail-ingredients"></div>
+                <input type="submit" value="Ajouter" />
             </form>
 
             <form action="#" th:action="@{/ingredient/add}" th:object="${ingredient}" method="post">

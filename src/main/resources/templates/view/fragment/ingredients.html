@@ -10,7 +10,8 @@
                 <div class="div-ingredient">
                     <ul>
                         <li th:each="alcool : ${alcools}">
-                            <input type="checkbox" th:id="${alcool.idIngredient}" th:value="${alcool.nomIngredient}">
+                            <input type="checkbox" th:id="${alcool.idIngredient}" th:value="${alcool.nomIngredient}"
+                                   th:data="${alcool.typeIngredient}" />
                             <label th:for="${alcool.idIngredient}" th:text="${alcool.nomIngredient}"></label>
                         </li>
                     </ul>
@@ -19,7 +20,8 @@
                 <div class="div-ingredient">
                     <ul th:each="soft : ${softs}">
                         <li>
-                            <input type="checkbox" th:id="${soft.idIngredient}" th:value="${soft.nomIngredient}">
+                            <input type="checkbox" th:id="${soft.idIngredient}" th:value="${soft.nomIngredient}"
+                                   th:data="${soft.typeIngredient}" />
                             <label th:for="${soft.idIngredient}" th:text="${soft.nomIngredient}"></label>
                         </li>
                     </ul>
@@ -28,7 +30,8 @@
                 <div class="div-ingredient">
                     <ul th:each="autre : ${autres}">
                         <li>
-                            <input type="checkbox" th:id="${autre.idIngredient}" th:value="${autre.nomIngredient}">
+                            <input type="checkbox" th:id="${autre.idIngredient}" th:value="${autre.nomIngredient}"
+                                   th:data="${autre.typeIngredient}" />
                             <label th:for="${autre.idIngredient}" th:text="${autre.nomIngredient}"></label>
                         </li>
                     </ul>

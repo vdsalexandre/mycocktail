@@ -73,6 +73,10 @@ input[type="checkbox"] {
     display: none;
 }
 
+input[type="text"], input[type="url"] {
+    text-transform: lowercase;
+}
+
 table {
     border-collapse: collapse;
     width: 80%;
