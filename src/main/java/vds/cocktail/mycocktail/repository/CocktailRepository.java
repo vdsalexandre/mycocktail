@@ -17,4 +17,6 @@ public interface CocktailRepository extends JpaRepository<Cocktail, Long> {
                     "GROUP BY C.id_cocktail HAVING COUNT (DISTINCT O.id_ingredient) = ?2", nativeQuery = true)
     List<Cocktail> findCocktailsContainingIngredients(List<Long> idIngredients, Integer nbrIngredients);
 
+    @Override
+    Cocktail save(Cocktail cocktail);
 }

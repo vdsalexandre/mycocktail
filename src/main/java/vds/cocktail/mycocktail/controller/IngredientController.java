@@ -33,7 +33,7 @@ public class IngredientController {
         }
         else {
             String defaultMessage = errors.getFieldError().getDefaultMessage();
-            LOGGER.warn("Erreur - {}", defaultMessage);
+            LOGGER.error("Erreur - {}", defaultMessage);
             attributes.addAttribute("errorMessage", defaultMessage);
         }
         return new RedirectView(serverContextPath + "/admin");

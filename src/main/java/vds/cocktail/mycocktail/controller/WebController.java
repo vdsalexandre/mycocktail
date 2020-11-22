@@ -6,13 +6,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import org.springframework.web.servlet.view.RedirectView;
 import vds.cocktail.mycocktail.model.Cocktail;
-import vds.cocktail.mycocktail.model.CocktailDto;
 import vds.cocktail.mycocktail.model.Ingredient;
 import vds.cocktail.mycocktail.repository.CocktailRepository;
 import vds.cocktail.mycocktail.repository.IngredientRepository;
@@ -69,7 +70,7 @@ public class WebController {
     public String admin(Model model) {
         getAllIngredients();
         LOGGER.info("admin view");
-        model.addAttribute("cocktailDto", new CocktailDto());
+        model.addAttribute("cocktail", new Cocktail());
         model.addAttribute("ingredient", new Ingredient());
         model.addAttribute("alcools", alcools);
         model.addAttribute("softs", softs);
@@ -78,10 +79,25 @@ public class WebController {
     }
 
     @PostMapping("/cocktail/add")
-    public RedirectView addCocktail(@ModelAttribute CocktailDto cocktailDto) {
-
-        LOGGER.info("{} - {} : {}", cocktailDto.getCocktail().getNomCocktail(), cocktailDto.getCocktail().getRecetteCocktail(), cocktailDto.getIngredients().size());
+    public RedirectView addCocktail(@ModelAttribute Cocktail cocktail, BindingResult erros, RedirectAttributes attributes) {
+        if (!erros.hasErrors()) {
+            cocktailRepository.save(cocktail);
+            LOGGER.info("{} - {} : {}", cocktail.getNomCocktail(), cocktail.getRecetteCocktail(), cocktail.getIngredients().size());
+        }
+        else {
+            String defaultMessage = erros.getFieldError().getDefaultMessage();
+            attributes.addAttribute("cocktailErrorMessage", defaultMessage);
+            LOGGER.error("Erreur - {}", defaultMessage);
+        }
         return new RedirectView(serverContextPath + "/admin");
+    }
+
+    @GetMapping("/cocktail/all")
+    public String showCocktails(Model model) {
+        List<Cocktail> cocktails = cocktailRepository.findAll();
+        LOGGER.info("returning all cocktails - {} found", cocktails.size());
+        model.addAttribute("cocktails", cocktails);
+        return "cocktail-all";
     }
 
     @PostConstruct

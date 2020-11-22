@@ -31,6 +31,7 @@ $(function () {
             if (indexId > -1)
                 ingredientsIds.splice(indexId, 1);
             element.closest('li').removeClass('liSelected');
+            removeCocktailIngredient(ingredientID);
         }
 
         p.text(arrayToString(ingredients));
@@ -82,14 +83,17 @@ function updateSearchUrl() {
 }
 
 function addCocktailIngredient(id, name, type) {
-    console.log(id + " - " + name + " - " + type);
     const index = ingredientsIds.length - 1;
     $('#div-cocktail-ingredients')
-        .append("<div>" +
-                    "<input type='hidden' id='ingredients[" + index + "].idIngredient' name='ingredients[" + index + "].idIngredient' th:value='" + id + "' />" +
-                    "<input type='hidden' id='ingredients[" + index + "].nomIngredient' name='ingredients[" + index + "].nomIngredient' th:value='" + name + "' />" +
-                    "<input type='hidden' id='ingredients[" + index + "].typeIngredient' name='ingredients[" + index + "].typeIngredient' th:value='" + type + "' />" +
+        .append("<div id='div-" + id + "'>" +
+                    "<input type='hidden' id='ingredients[" + index + "].idIngredient' name='ingredients[" + index + "].idIngredient' value='" + id + "' />" +
+                    "<input type='hidden' id='ingredients[" + index + "].nomIngredient' name='ingredients[" + index + "].nomIngredient' value='" + name + "' />" +
+                    "<input type='hidden' id='ingredients[" + index + "].typeIngredient' name='ingredients[" + index + "].typeIngredient' value='" + type + "' />" +
                 "</div>");
+}
+
+function removeCocktailIngredient(id) {
+    $('#div-' + id).remove();
 }
 
 function updateCurrentUrl() {

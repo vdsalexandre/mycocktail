@@ -8,6 +8,7 @@ import vds.cocktail.mycocktail.repository.IngredientRepository;
 
 import javax.validation.ConstraintValidator;
 import javax.validation.ConstraintValidatorContext;
+import java.util.ArrayList;
 import java.util.List;
 
 public class NomIngredientValidator implements ConstraintValidator<NomIngredient, String> {
@@ -15,9 +16,15 @@ public class NomIngredientValidator implements ConstraintValidator<NomIngredient
     @Autowired
     private IngredientRepository ingredientRepository;
 
+    private List<Ingredient> ingredients = new ArrayList<>();
+
+    @Override
+    public void initialize(NomIngredient constraintAnnotation) {
+        ingredients = ingredientRepository.findAll();
+    }
+
     @Override
     public boolean isValid(String value, ConstraintValidatorContext context) {
-        List<Ingredient> ingredients = ingredientRepository.findAll();
         for (Ingredient ingredient : ingredients) {
             if (ingredient.getNomIngredient().equals(value)) {
                 context.unwrap(HibernateConstraintValidatorContext.class).addMessageParameter("nomIngredient", ingredient.getNomIngredient());
