@@ -82,7 +82,7 @@ public class WebController {
     public RedirectView addCocktail(@ModelAttribute Cocktail cocktail, BindingResult erros, RedirectAttributes attributes) {
         if (!erros.hasErrors()) {
             cocktailRepository.save(cocktail);
-            LOGGER.info("{} - {} : {}", cocktail.getNomCocktail(), cocktail.getRecetteCocktail(), cocktail.getIngredients().size());
+            LOGGER.info("{} - {} - nombre d'ingredients : {}", cocktail.getNomCocktail(), cocktail.getRecetteCocktail(), cocktail.getIngredients().size());
         }
         else {
             String defaultMessage = erros.getFieldError().getDefaultMessage();
