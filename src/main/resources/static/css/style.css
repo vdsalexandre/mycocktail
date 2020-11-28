@@ -148,6 +148,7 @@ table {
 
 .td-center-right {
     text-align: right;
+    font-weight: bold;
 }
 
 .td-center-left {
@@ -158,4 +159,34 @@ table {
 .p-error {
     color: red;
     font-weight: bolder;
+}
+
+@media screen and (min-width: 1200px) {
+    .content {
+        width: 50%;
+        background: linear-gradient(270deg, rgba(255,69,0,1) 25%, rgba(18,10,143,1) 100%);
+        border: solid black 1px;
+        box-shadow: black 5px 5px 5px;
+        color: white;
+    }
+
+    table {
+        width: 100%;
+    }
+
+    input[type="url"] {
+        width: 90%;
+    }
+
+    input[type="text"] {
+        width: 50%;
+    }
+
+    .td-center-right {
+        width: 30%;
+    }
+
+    .td-center-left {
+        width: 70%;
+    }
 }
