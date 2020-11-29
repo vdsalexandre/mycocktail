@@ -7,15 +7,23 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
+            <h3 th:text="'Nombre de cocktails existants dans la base de données : ' + ${cocktails.size()}"></h3>
             <div th:class="'div-cocktail'" th:each="cocktail : ${cocktails}">
                 <h4 th:class="'h4-cocktail'" th:text="${cocktail.nomCocktail}"></h4>
-                <h5 th:text="'Ingredients :'"></h5>
-                <p th:each="ingredient : ${cocktail.ingredients}"
-                   th:text="'- ' + ${ingredient.nomIngredient}" th:class="'p-ingredient'"></p>
-                <h5 th:text="'Recette et préparation :'"></h5>
-                <p th:class="'p-ingredient'">
-                    <a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.nomCocktail}" th:target="'_blank'"></a>
-                </p>
+                <table th:class="tableCocktail">
+                    <tbody>
+                        <tr>
+                            <td th:class="td-label">Ingredients : </td>
+                            <td th:class="td-response"><span th:each="ingredient, iterator : ${cocktail.ingredients}"
+                                      th:text="${iterator.index < cocktail.ingredients.size()-1}
+                                      ? ${ingredient.nomIngredient} + ' -- ' : ${ingredient.nomIngredient}"></span></td>
+                        </tr>
+                        <tr>
+                            <td th:class="td-label">Recette et préparation : </td>
+                            <td th:class="td-response"><a th:href="${cocktail.recetteCocktail}" th:text="${cocktail.recetteCocktail}" th:target="'_blank'"></a></td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
 

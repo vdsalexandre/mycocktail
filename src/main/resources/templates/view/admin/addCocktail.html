@@ -9,6 +9,7 @@
         <div class="content center">
             <form action="#" method="post" th:action="@{/cocktail/add}" th:object="${cocktail}">
                 <h3 th:text="'Ajouter un nouveau cocktail'"></h3>
+                <p class="p-error center" th:if="${(param.cocktailErrorMessage)} != null" th:text="${param.cocktailErrorMessage[0]}"></p>
                 <table th:class="center">
                     <tbody>
                         <tr>
@@ -46,7 +47,7 @@
                             <td th:class="'td-center-left'">
                                 <select th:field="*{typeIngredient}">
                                     <option th:value="'alcool'" selected>alcool</option>
-                                    <option th:value="'soft'"></option>
+                                    <option th:value="'soft'">soft</option>
                                     <option th:value="'autre'">autre</option>
                                 </select>
                             </td>

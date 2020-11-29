@@ -19,6 +19,7 @@ import vds.cocktail.mycocktail.repository.CocktailRepository;
 import vds.cocktail.mycocktail.repository.IngredientRepository;
 
 import javax.annotation.PostConstruct;
+import javax.validation.Valid;
 import java.net.InetAddress;
 import java.net.UnknownHostException;
 import java.util.ArrayList;
@@ -79,7 +80,7 @@ public class WebController {
     }
 
     @PostMapping("/cocktail/add")
-    public RedirectView addCocktail(@ModelAttribute Cocktail cocktail, BindingResult erros, RedirectAttributes attributes) {
+    public RedirectView addCocktail(@Valid @ModelAttribute Cocktail cocktail, BindingResult erros, RedirectAttributes attributes) {
         if (!erros.hasErrors()) {
             cocktailRepository.save(cocktail);
             LOGGER.info("{} - {} - nombre d'ingredients : {}", cocktail.getNomCocktail(), cocktail.getRecetteCocktail(), cocktail.getIngredients().size());
@@ -94,7 +95,7 @@ public class WebController {
 
     @GetMapping("/cocktail/all")
     public String showCocktails(Model model) {
-        List<Cocktail> cocktails = cocktailRepository.findAll();
+        List<Cocktail> cocktails = cocktailRepository.findByOrderByNomCocktailAsc();
         LOGGER.info("returning all cocktails - {} found", cocktails.size());
         model.addAttribute("cocktails", cocktails);
         return "cocktail-all";
