@@ -47,20 +47,24 @@ h3, #pListIngredient {
     color: white;
 }
 
+#pListIngredient {
+    font-size: 18px;
+}
+
 h4 {
     font-size: 22px;
     cursor: pointer;
-    height: 40px;
+    height: 30px;
     border: solid black 1px;
-    line-height: 40px;
+    line-height: 32px;
     outline: none;
     background: linear-gradient(90deg, rgba(0,0,0,1) 0%, rgba(8,88,0,1) 35%, rgba(94,255,8,1) 100%);
 }
 
 h5 {
     text-align: left;
-    text-indent: 30px;
-    font-size: 18px;
+    text-indent: 15px;
+    font-size: 20px;
     font-weight: bold;
 }
 
@@ -121,16 +125,14 @@ table {
 }
 
 .h4-cocktail {
-    text-align: left;
-    text-indent: 10px;
     background: linear-gradient(270deg, rgba(255,69,0,1) 25%, rgba(18,10,143,1) 100%);
     color: white;
 }
 
 .p-ingredient {
     text-align: left;
-    text-indent: 50px;
-    font-size: 18px;
+    text-indent: 35px;
+    font-size: 19px;
 }
 
 .td-response a {

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" lang="fr">
     <head>
         <div th:replace="fragment/includes :: includes"></div>
     </head>
@@ -7,7 +7,7 @@
         <div th:replace="fragment/header :: header"></div>
 
         <div class="content center">
-            <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
+            <h3 th:text="'Cocktail(s) trouvé(s) | ' + ${cocktails.size()} + ' | qui contiennent :'"></h3>
             <p th:id="'pListIngredient'">
                 <th:block th:each="ingredient, iterator : ${ingredients}"
                           th:text="${iterator.index < ingredients.size()-1}
