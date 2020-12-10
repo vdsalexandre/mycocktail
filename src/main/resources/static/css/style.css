@@ -88,6 +88,15 @@ table {
     margin-bottom: 10px;
 }
 
+i {
+    position: absolute;
+    top: 58px;
+    left: 12px;
+    color: white;
+    font-size: 34px !important;
+    cursor: pointer;
+}
+
 .center {
     margin: auto;
     text-align: center;
@@ -209,5 +218,14 @@ table {
 
     .td-center-left {
         width: 70%;
+    }
+
+    i {
+        position: absolute;
+        top: 50px;
+        left: 30px;
+        color: white;
+        font-size: 45px !important;
+        cursor: pointer;
     }
 }

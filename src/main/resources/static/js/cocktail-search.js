@@ -46,4 +46,8 @@ $(function () {
             $(this).addClass('p-selected');
         }
     });
+
+    $('.material-icons').click(function () {
+        console.log("clicked bitch");
+    });
 });

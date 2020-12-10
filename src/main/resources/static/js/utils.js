@@ -24,3 +24,11 @@ function updateSearchUrl(searchParam) {
     searchUrl = searchUrl.substring(0, searchUrl.length - 1);
     searchElement.attr('href', searchUrl);
 }
+
+function showMenuPanel() {
+
+}
+
+function hideMenuPanel() {
+
+}
