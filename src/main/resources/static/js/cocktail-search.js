@@ -48,6 +48,6 @@ $(function () {
     });
 
     $('.material-icons').click(function () {
-        console.log("clicked bitch");
+        toggleMenuPanel();
     });
 });

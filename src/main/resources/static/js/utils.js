@@ -1,5 +1,6 @@
 let ingredients = [];
 let ingredientsIds = [];
+const menuElement = '.menu-panel';
 
 function arrayToString(elements) {
     let stringOfElements = '';
@@ -25,10 +26,6 @@ function updateSearchUrl(searchParam) {
     searchElement.attr('href', searchUrl);
 }
 
-function showMenuPanel() {
-
-}
-
-function hideMenuPanel() {
-
+function toggleMenuPanel() {
+    $(menuElement).slideToggle();
 }

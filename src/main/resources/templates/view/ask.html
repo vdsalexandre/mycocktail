@@ -6,6 +6,8 @@
     <body>
         <div th:replace="fragment/header :: header"></div>
 
+        <div th:replace="fragment/menu :: menu"></div>
+
         <div class="content center">
             <h3 th:text="'Je cherche un cocktail qui contient : '"></h3>
             <p th:id="'pListIngredient'"></p>

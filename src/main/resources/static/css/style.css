@@ -191,6 +191,19 @@ i {
     text-indent: 10px;
 }
 
+.menu-panel {
+    background: white;
+    position: absolute;
+    top: 64px;
+    left: 45px;
+    width: 65%;
+    height: 45%;
+    display: none;
+}
+
+/* --------------------------------------------------------------- */
+/* --- DESKTOP STYLE                                           --- */
+/* --------------------------------------------------------------- */
 @media screen and (min-width: 1200px) {
     .content {
         width: 50%;
@@ -221,11 +234,11 @@ i {
     }
 
     i {
-        position: absolute;
-        top: 50px;
-        left: 30px;
+        position: relative;
+        top: 0;
+        left: -20%;
         color: white;
-        font-size: 45px !important;
+        font-size: 55px !important;
         cursor: pointer;
     }
 }
