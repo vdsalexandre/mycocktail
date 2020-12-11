@@ -1,6 +1,9 @@
 let ingredients = [];
 let ingredientsIds = [];
-const menuElement = '.menu-panel';
+const menuPanel = '.menu-panel';
+const shadowPanel = '.shadow-panel';
+const menuButton = '.material-icons';
+const menuElement = '.menu-element';
 
 function arrayToString(elements) {
     let stringOfElements = '';
@@ -27,5 +30,12 @@ function updateSearchUrl(searchParam) {
 }
 
 function toggleMenuPanel() {
-    $(menuElement).slideToggle();
+    $(shadowPanel).toggle();
+    $(menuPanel).slideToggle();
+
+    if ($(shadowPanel).is(":hidden")) {
+        $("*").css("filter", "none");
+    } else {
+        $("body > *:not(" + menuElement + ")").css("filter", "blur(3px)");
+    }
 }

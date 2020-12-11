@@ -6,6 +6,11 @@
     <body>
         <div th:replace="fragment/header :: header"></div>
 
+        <div th:replace="fragment/menu :: menu"></div>
+        <div th:replace="fragment/menuButton :: menu-button"></div>
+
+        <div th:replace="fragment/shadowPanel :: shadowPanel"></div>
+
         <div class="content center">
             <h3 th:text="'Cocktail(s) trouvé(s) | ' + ${cocktails.size()} + ' | qui contiennent :'"></h3>
             <p th:id="'pListIngredient'">

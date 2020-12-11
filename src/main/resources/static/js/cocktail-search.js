@@ -47,7 +47,7 @@ $(function () {
         }
     });
 
-    $('.material-icons').click(function () {
+    $(menuButton).click(function () {
         toggleMenuPanel();
     });
 });
