@@ -36,6 +36,6 @@ function toggleMenuPanel() {
     if ($(shadowPanel).is(":hidden")) {
         $("*").css("filter", "none");
     } else {
-        $("body > *:not(" + menuElement + ")").css("filter", "blur(3px)");
+        $("body > *:not(" + menuElement + ")").css("filter", "blur(2px)");
     }
 }
